@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدمات سبايدر نت  | تسجيل ضمان اجتماعي وحلول رقمية</title>
+    <title>سبايدر نت للخدمات الإلكترونية | تسجيل ضمان اجتماعي وحلول رقمية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap');
@@ -495,14 +495,116 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+        
+        /* نافذة سياسة الخصوصية */
+        .privacy-popup {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .privacy-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .privacy-content {
+            background-color: white;
+            width: 90%;
+            max-width: 600px;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .privacy-content h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .privacy-content p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .privacy-content .close-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--warning);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .privacy-content .close-btn:hover {
+            background-color: #d3165a;
+        }
+        
+        .privacy-content .accept-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .privacy-content .accept-btn:hover {
+            background-color: var(--secondary);
+        }
     </style>
 </head>
 <body>
+    <!-- نافذة سياسة الخصوصية -->
+    <div class="privacy-popup" id="privacyPopup">
+        <div class="privacy-content">
+            <div class="close-btn" id="closePrivacy">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2>سياسة الخصوصية</h2>
+            <p>عزيزي العميل،</p>
+            <p>نود أن نؤكد لكم في سبايدر نت التزامنا الكامل بأعلى معايير السرية وحماية البيانات. نحن نُدرك تمامًا حساسية المعلومات التي يتم مشاركتها معنا أثناء إنجاز الخدمات، ولذلك فإننا نتبع سياسة صارمة تضمن:</p>
+            <p>- الحفاظ على سرية المعلومات وعدم مشاركتها مع أي طرف ثالث تحت أي ظرف.</p>
+            <p>- حذف جميع البيانات والمستندات بشكل نهائي وفوري بعد الانتهاء من تنفيذ العمل المطلوب.</p>
+            <p>- تطبيق أحدث أنظمة الأمان التقني لضمان عدم تعرض المعلومات لأي نوع من المخاطر أو الوصول غير المصرح به.</p>
+            <p>ثقتكم بنا مسؤولية نعتز بها، وخصوصيتكم من أولوياتنا التي لا نقبل التهاون بها.</p>
+            <p>مع فائق التقدير،<br>فريق سبايدر نت</p>
+            <button class="accept-btn" id="acceptPrivacy">موافق</button>
+        </div>
+    </div>
+
     <!-- الشريط العلوي -->
     <header id="header">
         <nav>
             <div class="logo">
-                <span>سبايدر نت للخدمات الالكترونية</span>
+                <span>سايدرنت للخدمات الإلكترونية</span>
                 <i class="fas fa-cogs"></i>
             </div>
             <ul class="nav-links">
@@ -669,8 +771,8 @@
     <!-- قسم الاتصال -->
     <section class="contact" id="contact">
         <div class="fade-in">
-            <h2>تواصل معنا الآن</h2>
-            <p>للاستفسار عن أي خدمة أو لطلب خدمة معينة، يمكنك التواصل معنا مباشرة عبر الواتساب وسنكون سعيدين بمساعدتك</p>
+            <h2>تواصل معا الآن</h2>
+            <p>للاستفسار عن أي خدمة أو لطلب خدمة معينة، يمكنك التواصل معنا مباشرة عبر الواتساب وسنكون سعيدون بمساعدتك</p>
             <a href="https://wa.me/966556805220" class="whatsapp-button" target="_blank">
                 <span>تواصل عبر الواتساب</span>
                 <i class="fab fa-whatsapp"></i>
@@ -682,7 +784,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>عن سبايدر نت</h3>
+                <h3>عن سبايدرنت</h3>
                 <p>أقدم مجموعة متكاملة من الخدمات الإلكترونية والرقمية لمساعدة الأفراد والطلاب في إنجاز معاملاتهم اليومية بكل سهولة واحترافية.</p>
             </div>
             <div class="footer-section">
@@ -703,7 +805,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>جميع الحقوق محفوظة &copy; 2025 لصالح عبدالرحمن الشبيلي</p>
+            <p>جميع الحقوق محفوظة &copy; 2025 لصالح سبايدر نت</p>
         </div>
     </footer>
 
@@ -755,6 +857,31 @@
         setInterval(() => {
             ctaButton.classList.toggle('floating');
         }, 6000);
+        
+        // نافذة سياسة الخصوصية
+        document.addEventListener('DOMContentLoaded', function() {
+            const privacyPopup = document.getElementById('privacyPopup');
+            const closePrivacy = document.getElementById('closePrivacy');
+            const acceptPrivacy = document.getElementById('acceptPrivacy');
+            
+            // التحقق مما إذا كان الزائر قد وافق سابقًا على السياسة
+            if (!localStorage.getItem('privacyAccepted')) {
+                setTimeout(() => {
+                    privacyPopup.classList.add('active');
+                }, 1000);
+            }
+            
+            // إغلاق النافذة عند النقر على زر الإغلاق
+            closePrivacy.addEventListener('click', () => {
+                privacyPopup.classList.remove('active');
+            });
+            
+            // قبول السياسة وحفظ التفضيل عند النقر على موافق
+            acceptPrivacy.addEventListener('click', () => {
+                localStorage.setItem('privacyAccepted', 'true');
+                privacyPopup.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
