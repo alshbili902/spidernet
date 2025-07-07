@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات سبايدر نت  | تسجيل ضمان اجتماعي وحلول رقمية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap');
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #1b263b;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --warning: #f72585;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* الشريط العلوي */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 0.5rem 2rem;
+            background: rgba(67, 97, 238, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* القسم الرئيسي */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background: linear-gradient(rgba(27, 38, 59, 0.8), rgba(27, 38, 59, 0.8)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgZmlsbD0iIzQ4OTVlZiIgY3g9IjIwIiBjeT0iMjAiIHI9IjEiLz48Y2lyY2xlIGZpbGw9IiM0ODk1ZWYiIGN4PSI0MCIgY3k9IjIwIiByPSIxIi8+PGNpcmNsZSBmaWxsPSIjNDg5NWVmIiBjeD0iMjAiIGN5PSI0MCIgcj0iMSIvPjwvZz48L3N2Zz4=');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        /* قسم الخدمات */
+        .services {
+            padding: 6rem 8%;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card:hover .service-icon,
+        .service-card:hover .service-content h3,
+        .service-card:hover .service-content p {
+            color: white;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin: 2rem 2rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .service-content {
+            padding: 0 2rem 2rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+        
+        .service-content p {
+            color: #666;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        
+        /* قسم الاتصال */
+        .contact {
+            padding: 6rem 8%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background-color: #128C7E;
+        }
+        
+        .whatsapp-button i {
+            margin-left: 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* التذييل */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 8%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-section p {
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-left: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+        
+        /* تأثيرات الحركة */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-pattern {
+                width: 80%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hero {
+                padding: 0 5%;
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-pattern {
+                display: none;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .contact h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* تأثيرات إضافية */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <span>سبايدر نت للخدمات الالكترونية</span>
+                <i class="fas fa-cogs"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#contact">اتصل بي</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero" id="home">
+        <div class="hero-pattern"></div>
+        <div class="hero-content fade-in">
+            <h1>حلول رقمية لجميع احتياجاتك</h1>
+            <p>أقدم مجموعة متكاملة من الخدمات الإلكترونية والرقمية لتسهيل إجراءاتك اليومية ومساعدتك في إنجاز مهامك بكل كفاءة واحترافية.</p>
+            <a href="#services" class="cta-button pulse">استكشف الخدمات</a>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services" id="services">
+        <div class="section-title fade-in">
+            <h2>خدماتنا المميزة</h2>
+        </div>
+        <div class="services-grid">
+            <!-- خدمة 1 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="service-content">
+                    <h3>تسجيل الضمان الاجتماعي المطور</h3>
+                    <p>مساعدة في تسجيل وتحديث بيانات الضمان الاجتماعي بكل دقة وسرية مع متابعة مستمرة لحالة الطلب.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 2 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="service-content">
+                    <h3>فتح حساب بنكي</h3>
+                    <p>إرشادك خطوة بخطوة لفتح حساب بنكي إلكتروني أو تقليدي مع أفضل العروض والمميزات.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 3 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-file-powerpoint"></i>
+                </div>
+                <div class="service-content">
+                    <h3>عرض بوربوينت احترافي</h3>
+                    <p>تصميم عروض تقديمية احترافية وجذابة لجميع الأغراض التعليمية أو التقديمية أو التجارية.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 4 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="service-content">
+                    <h3>أوراق عمل للمدارس</h3>
+                    <p>إعداد أوراق عمل واختبارات مخصصة لجميع المراحل الدراسية وفق المناهج المعتمدة.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 5 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="service-content">
+                    <h3>خرائط ذهنية لمراحل الدراسة</h3>
+                    <p>تصميم خرائط ذهنية مميزة تلخص المناهج الدراسية بطريقة إبداعية تسهل الفهم والحفظ.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 6 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="service-content">
+                    <h3>تحويل الملفات إلى PDF</h3>
+                    <p>تحويل جميع أنواع الملفات إلى صيغة PDF مع الحفاظ على الجودة والتنسيق الأصلي.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 7 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="service-content">
+                    <h3>تسجيل قياس للطلاب والطالبات</h3>
+                    <p>مساعدة في تسجيل اختبارات قياس وتقديم النصائح والإرشادات اللازمة للتحضير الجيد.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 8 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <div class="service-content">
+                    <h3>إصدار شهادة عمل حر وأسر منتجة</h3>
+                    <p>مساعدة في إصدار شهادات العمل الحر وتسجيل الأسر المنتجة مع توفير الاستشارات اللازمة.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 9 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="service-content">
+                    <h3>حجز موعد في الأحوال المدنية</h3>
+                    <p>حجز مواعيد إلكترونية في الأحوال المدنية لجميع الخدمات مع متابعة حالة الطلب.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 10 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="service-content">
+                    <h3>حجز مواعيد عامة</h3>
+                    <p>حجز مواعيد في مختلف الجهات الحكومية والخاصة بكل سهولة ويسر.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 11 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="service-content">
+                    <h3>إنشاء إيميل احترافي</h3>
+                    <p>مساعدة في إنشاء حسابات بريد إلكتروني احترافية مع تأمينها وحمايتها من الاختراق.</p>
+                </div>
+            </div>
+            
+            <!-- خدمة 12 -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="service-content">
+                    <h3>تسجيل حساب المواطن</h3>
+                    <p>مساعدة في تسجيل وتفعيل حساب المواطن وتحديث البيانات واستعادة كلمة المرور عند الحاجة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاتصال -->
+    <section class="contact" id="contact">
+        <div class="fade-in">
+            <h2>تواصل معنا الآن</h2>
+            <p>للاستفسار عن أي خدمة أو لطلب خدمة معينة، يمكنك التواصل معنا مباشرة عبر الواتساب وسنكون سعيدين بمساعدتك</p>
+            <a href="https://wa.me/966556805220" class="whatsapp-button" target="_blank">
+                <span>تواصل عبر الواتساب</span>
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>عن سبايدر نت</h3>
+                <p>أقدم مجموعة متكاملة من الخدمات الإلكترونية والرقمية لمساعدة الأفراد والطلاب في إنجاز معاملاتهم اليومية بكل سهولة واحترافية.</p>
+            </div>
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul style="list-style: none;">
+                    <li><a href="#home" style="color: white; text-decoration: none; line-height: 2;">الرئيسية</a></li>
+                    <li><a href="#services" style="color: white; text-decoration: none; line-height: 2;">الخدمات</a></li>
+                    <li><a href="#contact" style="color: white; text-decoration: none; line-height: 2;">اتصل بي</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>وسائل التواصل</h3>
+                <div class="social-links">
+                    <a href="https://wa.me/966556805220" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>جميع الحقوق محفوظة &copy; 2025 لصالح عبدالرحمن الشبيلي</p>
+        </div>
+    </footer>
+
+    <script>
+        // تنفيذ القائمة المتحركة على الأجهزة المحمولة
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // تأثير التمرير للشريط العلوي
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        // تأثير الظهور عند التمرير
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        // تشغيل عند التحميل وعند التمرير
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // تأثير العائمة للزر الرئيسي
+        const ctaButton = document.querySelector('.cta-button');
+        setInterval(() => {
+            ctaButton.classList.toggle('floating');
+        }, 6000);
+    </script>
+</body>
+</html>
