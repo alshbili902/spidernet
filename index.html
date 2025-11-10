@@ -3,885 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سبايدر نت للخدمات الإلكترونية | تسجيل ضمان اجتماعي وحلول رقمية</title>
+    <title>سبايدر نت للخدمات الإلكترونية</title>
+    <meta name="description" content="خدمات إلكترونية احترافية - تسجيل الضمان الاجتماعي، فتح حساب بنكي، تصميم المواقع وأكثر">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap');
-        
-        :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
-            --dark: #1b263b;
-            --light: #f8f9fa;
-            --success: #4cc9f0;
-            --warning: #f72585;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            overflow-x: hidden;
-        }
-        
-        /* الشريط العلوي */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        header.scrolled {
-            padding: 0.5rem 2rem;
-            background: rgba(67, 97, 238, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-left: 10px;
-            color: var(--accent);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-right: 1.5rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-        
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-        
-        /* القسم الرئيسي */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 8%;
-            background: linear-gradient(rgba(27, 38, 59, 0.8), rgba(27, 38, 59, 0.8)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            max-width: 600px;
-            z-index: 2;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: 2px solid var(--accent);
-        }
-        
-        .cta-button:hover {
-            background-color: transparent;
-            color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .hero-pattern {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgZmlsbD0iIzQ4OTVlZiIgY3g9IjIwIiBjeT0iMjAiIHI9IjEiLz48Y2lyY2xlIGZpbGw9IiM0ODk1ZWYiIGN4PSI0MCIgY3k9IjIwIiByPSIxIi8+PGNpcmNsZSBmaWxsPSIjNDg5NWVmIiBjeD0iMjAiIGN5PSI0MCIgcj0iMSIvPjwvZz48L3N2Zz4=');
-            opacity: 0.3;
-            z-index: 1;
-        }
-        
-        /* قسم الخدمات */
-        .services {
-            padding: 6rem 8%;
-            background-color: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 1rem;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            opacity: 0;
-            z-index: -1;
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .service-card:hover::before {
-            opacity: 1;
-        }
-        
-        .service-card:hover .service-icon,
-        .service-card:hover .service-content h3,
-        .service-card:hover .service-content p {
-            color: white;
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin: 2rem 2rem 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .service-content {
-            padding: 0 2rem 2rem;
-        }
-        
-        .service-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            transition: all 0.3s ease;
-        }
-        
-        .service-content p {
-            color: #666;
-            line-height: 1.6;
-            transition: all 0.3s ease;
-        }
-        
-        /* قسم الاتصال */
-        .contact {
-            padding: 6rem 8%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            text-align: center;
-        }
-        
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .whatsapp-button {
-            display: inline-flex;
-            align-items: center;
-            background-color: #25D366;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .whatsapp-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            background-color: #128C7E;
-        }
-        
-        .whatsapp-button i {
-            margin-left: 10px;
-            font-size: 1.5rem;
-        }
-        
-        /* التذييل */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 3rem 8%;
-            text-align: center;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-        
-        .footer-section p {
-            line-height: 1.6;
-            opacity: 0.8;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            margin-left: 10px;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-        }
-        
-        /* تأثيرات الحركة */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .fade-in.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* تصميم متجاوب */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero-pattern {
-                width: 80%;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--secondary);
-                flex-direction: column;
-                align-items: center;
-                padding-top: 2rem;
-                transition: all 0.5s ease;
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links li {
-                margin: 1rem 0;
-            }
-            
-            .hero {
-                padding: 0 5%;
-                text-align: center;
-            }
-            
-            .hero-content {
-                margin: 0 auto;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-pattern {
-                display: none;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .contact h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        /* تأثيرات إضافية */
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        /* نافذة سياسة الخصوصية */
-        .privacy-popup {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .privacy-popup.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .privacy-content {
-            background-color: white;
-            width: 90%;
-            max-width: 600px;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        
-        .privacy-content h2 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .privacy-content p {
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-        
-        .privacy-content .close-btn {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: var(--warning);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .privacy-content .close-btn:hover {
-            background-color: #d3165a;
-        }
-        
-        .privacy-content .accept-btn {
-            display: block;
-            width: 100%;
-            padding: 0.8rem;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-        
-        .privacy-content .accept-btn:hover {
-            background-color: var(--secondary);
-        }
-    </style>
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- نافذة سياسة الخصوصية -->
-    <div class="privacy-popup" id="privacyPopup">
-        <div class="privacy-content">
-            <div class="close-btn" id="closePrivacy">
-                <i class="fas fa-times"></i>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-bolt"></i>
+                <span>سبايدر نت للخدمات الإلكترونية</span>
             </div>
-            <h2>سياسة الخصوصية</h2>
-            <p>عزيزي العميل،</p>
-            <p>نود أن نؤكد لكم في سبايدر نت التزامنا الكامل بأعلى معايير السرية وحماية البيانات. نحن نُدرك تمامًا حساسية المعلومات التي يتم مشاركتها معنا أثناء إنجاز الخدمات، ولذلك فإننا نتبع سياسة صارمة تضمن:</p>
-            <p>- الحفاظ على سرية المعلومات وعدم مشاركتها مع أي طرف ثالث تحت أي ظرف.</p>
-            <p>- حذف جميع البيانات والمستندات بشكل نهائي وفوري بعد الانتهاء من تنفيذ العمل المطلوب.</p>
-            <p>- تطبيق أحدث أنظمة الأمان التقني لضمان عدم تعرض المعلومات لأي نوع من المخاطر أو الوصول غير المصرح به.</p>
-            <p>ثقتكم بنا مسؤولية نعتز بها، وخصوصيتكم من أولوياتنا التي لا نقبل التهاون بها.</p>
-            <p>مع فائق التقدير،<br>فريق سبايدر نت</p>
-            <button class="accept-btn" id="acceptPrivacy">موافق</button>
-        </div>
-    </div>
-
-    <!-- الشريط العلوي -->
-    <header id="header">
-        <nav>
-            <div class="logo">
-                <span>سايدرنت للخدمات الإلكترونية</span>
-                <i class="fas fa-cogs"></i>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#services">الخدمات</a></li>
-                <li><a href="#contact">اتصل بي</a></li>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">الرئيسية</a></li>
+                <li><a href="#services" class="nav-link">الخدمات</a></li>
+                <li><a href="#subscriptions" class="nav-link">الاشتراكات</a></li>
+                <li><a href="#about" class="nav-link">من نحن</a></li>
+                <li><a href="#contact" class="nav-link">التواصل</a></li>
             </ul>
             <div class="hamburger">
-                <i class="fas fa-bars"></i>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- القسم الرئيسي -->
-    <section class="hero" id="home">
-        <div class="hero-pattern"></div>
-        <div class="hero-content fade-in">
-            <h1>حلول رقمية لجميع احتياجاتك</h1>
-            <p>أقدم مجموعة متكاملة من الخدمات الإلكترونية والرقمية لتسهيل إجراءاتك اليومية ومساعدتك في إنجاز مهامك بكل كفاءة واحترافية.</p>
-            <a href="#services" class="cta-button pulse">استكشف الخدمات</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">خدمات إلكترونية سريعة ومضمونة</h1>
+                <p class="hero-subtitle">أسهّل عليك كل الخدمات الإلكترونية والتعليمية والتقنية بخطوات بسيطة وسريعة</p>
+                <a href="https://wa.me/966556805220" class="cta-button ripple-effect" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    تواصل الآن
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
         </div>
     </section>
 
-    <!-- قسم الخدمات -->
-    <section class="services" id="services">
-        <div class="section-title fade-in">
-            <h2>خدماتنا المميزة</h2>
-        </div>
-        <div class="services-grid">
-            <!-- خدمة 1 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <div class="service-content">
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">خدماتنا المميزة</h2>
+                <p class="section-subtitle">نقدم لك مجموعة شاملة من الخدمات الإلكترونية بجودة عالية وسرعة في التنفيذ</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
                     <h3>تسجيل الضمان الاجتماعي المطور</h3>
-                    <p>مساعدة في تسجيل وتحديث بيانات الضمان الاجتماعي بكل دقة وسرية مع متابعة مستمرة لحالة الطلب.</p>
+                    <p>تسجيل سريع وآمن في نظام الضمان الاجتماعي المطور</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-            </div>
-            
-            <!-- خدمة 2 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <div class="service-content">
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
                     <h3>فتح حساب بنكي</h3>
-                    <p>إرشادك خطوة بخطوة لفتح حساب بنكي إلكتروني أو تقليدي مع أفضل العروض والمميزات.</p>
+                    <p>مساعدة في فتح الحسابات البنكية بسهولة وسرعة</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-            </div>
-            
-            <!-- خدمة 3 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-file-powerpoint"></i>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-presentation"></i>
+                    </div>
+                    <h3>عروض بوربوينت احترافية</h3>
+                    <p>تصميم عروض تقديمية مميزة ومؤثرة</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-                <div class="service-content">
-                    <h3>عرض بوربوينت احترافي</h3>
-                    <p>تصميم عروض تقديمية احترافية وجذابة لجميع الأغراض التعليمية أو التقديمية أو التجارية.</p>
-                </div>
-            </div>
-            
-            <!-- خدمة 4 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-book-open"></i>
-                </div>
-                <div class="service-content">
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
                     <h3>أوراق عمل للمدارس</h3>
-                    <p>إعداد أوراق عمل واختبارات مخصصة لجميع المراحل الدراسية وفق المناهج المعتمدة.</p>
+                    <p>إعداد أوراق عمل تعليمية متنوعة وهادفة</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-            </div>
-            
-            <!-- خدمة 5 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-brain"></i>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>خرائط ذهنية</h3>
+                    <p>تصميم خرائط ذهنية لجميع مراحل الدراسة</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-                <div class="service-content">
-                    <h3>خرائط ذهنية لمراحل الدراسة</h3>
-                    <p>تصميم خرائط ذهنية مميزة تلخص المناهج الدراسية بطريقة إبداعية تسهل الفهم والحفظ.</p>
-                </div>
-            </div>
-            
-            <!-- خدمة 6 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-file-pdf"></i>
-                </div>
-                <div class="service-content">
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
                     <h3>تحويل الملفات إلى PDF</h3>
-                    <p>تحويل جميع أنواع الملفات إلى صيغة PDF مع الحفاظ على الجودة والتنسيق الأصلي.</p>
+                    <p>تحويل احترافي للملفات بجودة عالية</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-            </div>
-            
-            <!-- خدمة 7 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-graduation-cap"></i>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>تسجيل قياس</h3>
+                    <p>تسجيل اختبارات قياس للطلاب والطالبات</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-                <div class="service-content">
-                    <h3>تسجيل قياس للطلاب والطالبات</h3>
-                    <p>مساعدة في تسجيل اختبارات قياس وتقديم النصائح والإرشادات اللازمة للتحضير الجيد.</p>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="service-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>شهادة عمل حر</h3>
+                    <p>إصدار شهادات العمل الحر والأسر المنتجة</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-            </div>
-            
-            <!-- خدمة 8 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-certificate"></i>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="900">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>حجز المواعيد</h3>
+                    <p>حجز مواعيد الأحوال المدنية والمواعيد العامة</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-                <div class="service-content">
-                    <h3>إصدار شهادة عمل حر وأسر منتجة</h3>
-                    <p>مساعدة في إصدار شهادات العمل الحر وتسجيل الأسر المنتجة مع توفير الاستشارات اللازمة.</p>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>إنشاء إيميل</h3>
+                    <p>إنشاء حسابات بريد إلكتروني احترافية</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
-            </div>
-            
-            <!-- خدمة 9 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
-                <div class="service-content">
-                    <h3>حجز موعد في الأحوال المدنية</h3>
-                    <p>حجز مواعيد إلكترونية في الأحوال المدنية لجميع الخدمات مع متابعة حالة الطلب.</p>
-                </div>
-            </div>
-            
-            <!-- خدمة 10 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <div class="service-content">
-                    <h3>حجز مواعيد عامة</h3>
-                    <p>حجز مواعيد في مختلف الجهات الحكومية والخاصة بكل سهولة ويسر.</p>
-                </div>
-            </div>
-            
-            <!-- خدمة 11 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div class="service-content">
-                    <h3>إنشاء إيميل احترافي</h3>
-                    <p>مساعدة في إنشاء حسابات بريد إلكتروني احترافية مع تأمينها وحمايتها من الاختراق.</p>
-                </div>
-            </div>
-            
-            <!-- خدمة 12 -->
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <div class="service-content">
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="1100">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <h3>تسجيل حساب المواطن</h3>
-                    <p>مساعدة في تسجيل وتفعيل حساب المواطن وتحديث البيانات واستعادة كلمة المرور عند الحاجة.</p>
+                    <p>تسجيل وتفعيل حساب المواطن بسهولة</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="1200">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>تصميم وبرمجة المواقع</h3>
+                    <p>تصميم مواقع احترافية ومتجاوبة</p>
+                    <a href="https://wa.me/966556805220" class="service-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم الاتصال -->
-    <section class="contact" id="contact">
-        <div class="fade-in">
-            <h2>تواصل معنا الآن</h2>
-            <p>للاستفسار عن أي خدمة أو لطلب خدمة معينة، يمكنك التواصل معنا مباشرة عبر الواتساب وسنكون سعيدون بمساعدتك</p>
-            <a href="https://wa.me/message/4BLQGDDQGWLKB1" class="whatsapp-button" target="_blank">
-                <span>تواصل عبر الواتساب</span>
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
-    </section>
+    <!-- Subscriptions Section -->
+    <section id="subscriptions" class="subscriptions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">اشتراكات البرامج الذكية</h2>
+                <p class="section-subtitle">احصل على اشتراكات ChatGPT و Gemini بأفضل الأسعار</p>
+            </div>
+            
+            <div class="subscriptions-grid">
+                <div class="subscription-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="subscription-header">
+                        <div class="subscription-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>ChatGPT Plus</h3>
+                        <div class="subscription-price">شهري</div>
+                    </div>
+                    <div class="subscription-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> وصول غير محدود</li>
+                            <li><i class="fas fa-check"></i> استجابة أسرع</li>
+                            <li><i class="fas fa-check"></i> ميزات متقدمة</li>
+                            <li><i class="fas fa-check"></i> دعم فني</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/966556805220" class="subscription-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
+                </div>
 
-    <!-- التذييل -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>عن سبايدرنت</h3>
-                <p>أقدم مجموعة متكاملة من الخدمات الإلكترونية والرقمية لمساعدة الأفراد والطلاب في إنجاز معاملاتهم اليومية بكل سهولة واحترافية.</p>
-            </div>
-            <div class="footer-section">
-                <h3>روابط سريعة</h3>
-                <ul style="list-style: none;">
-                    <li><a href="#home" style="color: white; text-decoration: none; line-height: 2;">الرئيسية</a></li>
-                    <li><a href="#services" style="color: white; text-decoration: none; line-height: 2;">الخدمات</a></li>
-                    <li><a href="#contact" style="color: white; text-decoration: none; line-height: 2;">اتصل بي</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>وسائل التواصل</h3>
-                <div class="social-links">
-                    <a href="https://wa.me/message/4BLQGDDQGWLKB1" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="subscription-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="featured-badge">الأكثر طلباً</div>
+                    <div class="subscription-header">
+                        <div class="subscription-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>Google Gemini Pro</h3>
+                        <div class="subscription-price">شهري</div>
+                    </div>
+                    <div class="subscription-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> ذكاء اصطناعي متطور</li>
+                            <li><i class="fas fa-check"></i> معالجة متعددة الوسائط</li>
+                            <li><i class="fas fa-check"></i> تحليل الصور والنصوص</li>
+                            <li><i class="fas fa-check"></i> أداء فائق السرعة</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/966556805220" class="subscription-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
+                </div>
+
+                <div class="subscription-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="subscription-header">
+                        <div class="subscription-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>باقة مميزة</h3>
+                        <div class="subscription-price">ChatGPT + Gemini</div>
+                    </div>
+                    <div class="subscription-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> اشتراك مزدوج</li>
+                            <li><i class="fas fa-check"></i> توفير في السعر</li>
+                            <li><i class="fas fa-check"></i> مميزات كاملة</li>
+                            <li><i class="fas fa-check"></i> دعم مستمر</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/966556805220" class="subscription-btn ripple-effect" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        اطلب عبر الواتس
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            <p>جميع الحقوق محفوظة &copy; 2025 لصالح سبايدر نت</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h2>من نحن</h2>
+                    <p>نحن فريق متخصص في تقديم الخدمات الإلكترونية بأعلى معايير الجودة والسرعة. نسعى لتسهيل الإجراءات الحكومية والتعليمية والتقنية على عملائنا من خلال خبرتنا الواسعة في هذا المجال.</p>
+                    <p>نؤمن بأن التكنولوجيا يجب أن تكون في خدمة الإنسان، لذلك نعمل على تبسيط العمليات المعقدة وتحويلها إلى خطوات سهلة وسريعة.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>سرعة في التنفيذ</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-check"></i>
+                            <span>أمان وموثوقية</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-headset"></i>
+                            <span>دعم فني مستمر</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <div class="image-placeholder">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">جاهز أساعدك في أي خدمة إلكترونية تحتاجها</h2>
+                <p class="section-subtitle">تواصل معنا الآن عبر الواتساب للحصول على خدمة سريعة ومميزة</p>
+            </div>
+            
+            <div class="contact-content">
+                <a href="https://wa.me/966556805220" class="main-contact-btn pulse-animation ripple-effect" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    تواصل عبر الواتساب
+                </a>
+                
+                <div class="contact-info">
+                    <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-phone"></i>
+                        <span>966556805220+</span>
+                    </div>
+                    <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-clock"></i>
+                        <span>متاح 24/7</span>
+                    </div>
+                    <div class="contact-item" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-bolt"></i>
+                        <span>استجابة فورية</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-bolt"></i>
+                    <span>سبايدر نت للخدمات الإلكترونية</span>
+                </div>
+                <p>&copy; 2024 جميع الحقوق محفوظة للمصمم والمبرمج عبدالرحمن الشبيلي</p>
+                <a href="https://wa.me/966556805220" class="footer-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // تنفيذ القائمة المتحركة على الأجهزة المحمولة
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-        
-        // إغلاق القائمة عند النقر على رابط
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        
-        // تأثير التمرير للشريط العلوي
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-        
-        // تأثير الظهور عند التمرير
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeInOnScroll = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('active');
-                }
-            });
-        };
-        
-        // تشغيل عند التحميل وعند التمرير
-        window.addEventListener('load', fadeInOnScroll);
-        window.addEventListener('scroll', fadeInOnScroll);
-        
-        // تأثير العائمة للزر الرئيسي
-        const ctaButton = document.querySelector('.cta-button');
-        setInterval(() => {
-            ctaButton.classList.toggle('floating');
-        }, 6000);
-        
-        // نافذة سياسة الخصوصية
-        document.addEventListener('DOMContentLoaded', function() {
-            const privacyPopup = document.getElementById('privacyPopup');
-            const closePrivacy = document.getElementById('closePrivacy');
-            const acceptPrivacy = document.getElementById('acceptPrivacy');
-            
-            // التحقق مما إذا كان الزائر قد وافق سابقًا على السياسة
-            if (!localStorage.getItem('privacyAccepted')) {
-                setTimeout(() => {
-                    privacyPopup.classList.add('active');
-                }, 1000);
-            }
-            
-            // إغلاق النافذة عند النقر على زر الإغلاق
-            closePrivacy.addEventListener('click', () => {
-                privacyPopup.classList.remove('active');
-            });
-            
-            // قبول السياسة وحفظ التفضيل عند النقر على موافق
-            acceptPrivacy.addEventListener('click', () => {
-                localStorage.setItem('privacyAccepted', 'true');
-                privacyPopup.classList.remove('active');
-            });
-        });
-    </script>
+    <!-- Fixed WhatsApp Button -->
+    <div class="whatsapp-float shake-animation">
+        <a href="https://wa.me/966556805220" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
